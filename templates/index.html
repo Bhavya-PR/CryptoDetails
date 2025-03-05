@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Exchange</title>
+</head>
+<body>
+    <h1>Search for a Coin</h1>
+    <form method="POST" action="/">
+        <label for="symbol">Enter Symbol:</label>
+        <input type="text" id="symbol" name="symbol" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if coin %}
+        <h2>Coin Details</h2>
+        <div>
+            <img src="{{ coin.iconUrl }}" alt="{{ coin.name }}" width="50">
+            <p>UUID: {{ coin.uuid }}</p>
+            <p>Symbol: {{ coin.symbol }}</p>
+            <p>Name: {{ coin.name }}</p>
+            <p><a href="{{ coin.coinrankingUrl }}" target="_blank">More Info</a></p>
+        </div>
+    {% elif error %}
+        <p>{{ error }}</p>
+    {% endif %}
+</body>
+</html>
